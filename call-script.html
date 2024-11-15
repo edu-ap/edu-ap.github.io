@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Directory Submission</title>
+    <style>
+        body{margin:0;font-family:'Poppins', sans-serif, system-ui;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;display:grid;place-items:center}
+        .container{width:90%;max-width:600px;min-height:400px;background:#fff;border-radius:16px;box-shadow:0 10px 30px #0003;padding:2rem;position:relative}
+        .progress-bar{position:absolute;top:0;left:0;height:4px;background:#667eea;transition:.3s;border-radius:4px 0 0}
+        .question,.start-screen{display:none;animation:f .5s}.question.active,.start-screen.active{display:flex;flex-direction:column;justify-content:center;align-items:left;text-align:left}
+        h2{font-size:2rem;margin-bottom:2rem;line-height:1.3}
+        .help{font-size:1rem;color:#666;background:#f3f4f6;padding:1rem;border-radius:8px;margin:1rem 0;border-left:4px solid #667eea}
+        .buttons{display:flex;gap:1rem;margin-top:2rem;justify-content:flex-end}
+        button{padding:1rem 2rem;border:0;border-radius:8px;font-size:1.1rem;cursor:pointer;transition:.2s;background:#f3f4f6;color:#4b5563}
+        button:hover{transform:translateY(-2px);box-shadow:0 4px 12px #0001}
+        .primary{background:#667eea;color:#fff}
+        .secondary{background:#f3f4f6;color:#4b5563}
+        .back-btn{position:absolute;top:1rem;left:1rem;padding:.5rem 1rem;display:flex;align-items:center;gap:.5rem}
+        .done{display:none;text-align:center}.done.active{display:block;animation:f .5s}
+        @keyframes f{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .step{position:absolute;top:1rem;right:1rem;font-size:.9rem;color:#6b7280}
+        .logo{font-size:3rem;margin-bottom:1rem}
+        .intro-text{color:#666;margin-bottom:2rem;max-width:400px}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar"></div>
+        <div class="step">Step <span id="c">1</span> of <span id="t"></span></div>
+        <div id="start" class="start-screen active">
+            <div class="logo">📋</div>
+            <h2>Directorease – AI smart call script</h2>
+            <p class="intro-text">To effectively prepare for the Chambers submission, it's crucial to gather comprehensive and precise information from the senior lawyer tasked with responsibility for the submission. <br><br>The following interview script is designed to elicit all necessary details within a 45-minute meeting.<br> </p>
+            <button onclick="startProcess()" class="primary">Begin Call Script</button>
+        </div>
+        <div id="q"></div>
+        <div class="done">
+            <h2>✨ Directory Submission Complete!</h2>
+            <p>All steps successfully completed.</p>
+            <button onclick="r()" class="primary">Start New Submission</button>
+        </div>
+    </div>
+
+<!-- Directorease – basic call script 
+
+To effectively prepare for the Chambers submission, it's crucial to gather comprehensive and precise information from the senior lawyer tasked with responsibility for the submission. The following interview script is designed to elicit all necessary details within a 45-minute meeting. 
+
+Intro  
+
+Thank you for meeting with me. Our objective today is to gather all the necessary information to complete our Chambers submission accurately and comprehensively. 
+
+A. Preliminary information 
+
+No discussion required. This information will have been pre-populated from previous submissions. 
+
+B. Department information 
+
+Numbers: Can I just confirm the numbers we have in relation to people within the department? We’ve taken last year’s numbers as a baseline? Do you want us to update / check with HR? 
+
+Leavers/joiners: Have there been any significant changes in the team over the past year, such as notable hires or departures?" 
+
+[Edu note – we should be able to scrape the corporate website for joiners. Simple search on Twobirds website provides this example] 
+
+Ranked/unranked lawyers: we’ve pulled across the list of ranked/unranked lawyers from last year’s submission doc and removed anyone that’s left and/or upgraded anyone that’s been promoted. Are there any omissions / people you want to add? 
+
+[Edu note – again, the majority of this info will come from last year’s submission doc and be largely similar. Things we could do to enhance is scrape the website for each individual and identify if they are mentioned on any new deals / have written new articles / participated in events / webinars etc] 
+
+What is the department best known for: we’ve pulled across the description from last year’s submission so have a good baseplate for the information and description. Can you tell me though, in your own words, what you think we should highlight this year? Things that resonate with the directories include: 
+
+Market making deals 
+
+“First of” type transactions 
+
+Big lateral hires 
+
+Big new client wins 
+
+Feedback: do you have any feedback on the ranking we received last year? 
+
+[Edu note – what would be helpful here is to identify:  
+
+what was last years ranking 
+
+who was ranked above/below/same tier 
+
+what was the commentary associated with the firm] 
+
+Are there any firms in particular that have done well / poorly in the previous 12 months that we want to highlight to the directories? Examples would include where a big hitting lateral / team has left one firm and joined another and/or whether a firm has not been visible on transactions / matters. Similarly, if one firm has dominated the deal size / volume – we should mention them. 
+
+[Edu] 
+
+C. Feedback 
+
+Has the team worked with any barristers or advocates over the past 12 months that are worthy of note and inclusion in the submission? If so, who? Can you tell me a little bit about why you’d recommend them? 
+
+[Edu note – it is likely that the list from the previous year’s submission will not have changed materially and so I would drag this across as part of the pre work] 
+
+D. Publishable information & E. Confidential Information 
+
+[Edu note – the question set for publishable and non publishable matters is the same. This section is where I think we can make most difference during the submission process.] 
+
+So, we’re going to spend the next portion of the interview talking about the matters that will make the submission stand out.  
+
+As you know, there are two types of matter for Chambers – publishable and non-publishable (i.e. confidential).  
+
+First of all, let’s look at the matters that were categorised as ongoing last year and might still be viable for inclusion this year. Remember, a matter can be included if there is a material change in the status of the matter during the previous 12 months. 
+
+[Edu note – list ongoing matters from previous submission. Decide whether each matter should be included.] 
+
+We’ve also identified, from a variety of sources (pitches, website etc) the following potential matters for inclusion. 
+
+[Edu note – list ongoing matters from previous submission. Decide whether each matter should be included.] 
+
+First of all, let’s run through those matters we’re going to include again from last year’s submission. We need to know, for each one, the updates you can provide on matter progress. This could be that the matter has reached a significant milestone (has closed / transaction has completed) for example.  
+
+ 
+
+For new matters we are including this year we need to run through the requirements that need to be flagged as part of the Chambers submission. This will ensure that the researcher has all of the relevant information required to decide on your ranking.  
+
+Firstly, who was the client? And is this deal publishable or confidential? To clarify, publishable means that Chambers can use the client’s name in their rankings commentary and associate the client/matter with you. 
+
+Tell me, in your own words, what was the matter and what we did for them. if useful, think about answering the question in three parts: 
+
+Why did the client come to you? What problem were they trying to solve? Why was the engagement of you (external counsel) important to them? 
+
+What did you do to help the client solve their problem? What steps did you take?  
+
+What was the outcome of the matter? What value did the client gain from engaging you / your firm? Was the value reputational / monetary / risk avoidance / growth?  
+
+[Edu note – at this point it would be useful to check notes and see if any of the following questions (hygiene factors) have already been included. If not, ask the questions below] 
+
+Thanks for that description. A few follow up questions if I may to ensure we have a complete dataset when it comes to drafting: 
+
+Is there a value we can place on the matter? This can be the transactional value of the deal or size of claim. 
+
+Is the matter cross border? If so, can you list the jurisdictions you acted in and the lawyers in those jurisdictions? 
+
+Who led the matter on your side? Are there other team members we should mention in addition to those you’ve listed from other jurisdictions above? 
+
+Has the matter completed? If so, when did it finish? If not, we’ll list as “ongoing”. OK? 
+
+Is there anything else you think would be useful to add about the matter? Was there any press coverage? Did we win any awards? 
+
+[@Edu note – this last question set is then repeated for each new matter that the lead lawyer wants to put forward.] 
+ --> 
+<script>
+// Define the workflow steps
+const WORKFLOW_STEPS = {
+    // Initial Assessment
+    s01: {
+        q: "Introduction",
+        n: answer => answer ? 's02' : 's01',
+        l: 1,
+        m: "Please use the text in <i><b>bold italics</b></i> as a call script:<br><br><i><b>Thank you for meeting with me. <br>Our objective today is to gather all the necessary information to complete our Chambers submission accurately and comprehensively.</b></i> <br><br>Press 'Next' once done."
+    },
+    s02: {
+        q: "A. Preliminary information",
+        n: answer => answer ? 's03' : 's02',
+        l: 2,
+        m: "Please go item by item at the top of the AI generated draft and request verbal confirmation that the information is correct. <br>For this please feel free to share your screen and show the AI generated draft to help with the conversation and build trust."
+    },
+    s03: {
+        q: "B. Department information - Numbers",
+        n: answer => answer ? 's04' : 's03',
+        l: 3,
+        m: "Introduce the topic of department numbers and ask:<br><br><i><b>In relation to department numbers; <br> - Can I just confirm the numbers we have in relation to people within the department are correct?<br> - Do you want us to check anything with HR?</b></i>"
+    },
+    s04: {
+        q: "B. Department information - Leavers/joiners",
+        n: answer => answer ? 's05' : 's04',
+        l: 4,
+        m: "Please verbally validate the pre-polutated information in the AI generated draft. If not, please ask:<br><br><i><b> - 'Have there been any significant changes in the team over the past year, such as notable hires or departures?</b></i>"
+    },
+    s05: {
+        q: "B. Department information - Ranked/unranked lawyers",
+        n: answer => answer ? 's06' : 's05',
+        l: 5,
+        m: "<i><b>We’ve pulled across the list of ranked/unranked lawyers from last year’s submission doc and removed anyone that’s left and/or upgraded anyone that’s been promoted. <br> - Are there any omissions / people you want to add?</b></i>"
+    },
+    s06: {
+        q: "B. Department information - What is the department best known for?",
+        n: answer => answer ? 's07' : 's06',
+        l: 6,
+        m: "<i><b>We’ve pulled across the description from last year’s submission so have a good baseplate for the information and description. <br><br>Can you tell me though, in your own words, <br> - what you think we should highlight this year?<br><br>We will cover each sub-topic one by one."
+    },
+    s07: {
+        q: "B. Department information - Market making deals",
+        n: answer => answer ? 's08' : 's07',
+        l: 7,
+        m: "Discuss and take notes, you will have the transcript as backup for reference."
+    },
+    s08: {
+        q: "B. Department information - 'First of' type transactions",
+        n: answer => answer ? 's09' : 's08',
+        l: 8,
+        m: "Discuss and take notes, you will have the transcript as backup for reference."
+    },
+    s09: {
+        q: "B. Department information - Big lateral hires",
+        n: answer => answer ? 's10' : 's09',
+        l: 9,
+        m: "Discuss and take notes, you will have the transcript as backup for reference."
+    },
+    s10: {
+        q: "B. Department information - Big new client wins",
+        n: answer => answer ? 's11' : 's10',
+        l: 10,
+        m: "Discuss and take notes, you will have the transcript as backup for reference."
+    },
+    s11: {
+        q: "B. Department information - Feedback",
+        n: answer => answer ? 's12' : 's11',
+        l: 11,
+        m: "<i><b>Do you have any feedback on the ranking we received last year?</b></i>"
+    },
+    s12: {
+        q: "C. Feedback",
+        n: answer => answer ? 's13' : 's12',
+        l: 12,
+        m: "<i><b>Has the team worked with any barristers or advocates over the past 12 months that are worthy of note and inclusion in the submission? <br>If so, who? Can you tell me a little bit about why you’d recommend them?</b></i>"
+    },
+    s13: {
+        q: "D. Publishable information & E. Confidential Information - <br>Ongoing Matters (1/5)",
+        n: answer => answer ? 's14' : 's13',
+        l: 13,
+        m: "Please scroll to the section of ongoing matters in the AI smart draft and discuss as suggested below:<br><br><i><b>So, we’re going to spend the next portion of the interview talking about the matters that will make the submission stand out. <br> As you know, there are two types of matter for Chambers: <br> - publishable and <br> - non-publishable (i.e. confidential).  <br><br> First of all, let’s look at the matters that were categorised as ongoing last year and might still be viable for inclusion this year. <br>Remember, a matter can be included if there is a material change in the status of the matter during the previous 12 months.</b></i>"
+    },
+    s14: {
+        q: "D. Publishable information & E. Confidential Information - <br>Newly identified material (2/5)",
+        n: answer => answer ? 's15' : 's14',
+        l: 14,
+        m: "Please scroll to the section of newly identified matters in the AI smart draft and discuss as below:<br><br><i><b>We’ve also identified, from a variety of sources (pitches, website etc) the following potential matters for inclusion. </b></i> <br><br>Take notes on what needs to be removed or added in term of new sources, you will have the transcript as backup for reference later."
+    },
+    s15: {
+        q: "D. Publishable information & E. Confidential Information - <br>Updating Information (3/5)",
+        n: answer => answer ? 's16' : 's15',
+        l: 15,
+        m: "Gather the relevant updates:<br><br><i><b>Let’s run through those matters we’re going to include again from last year’s submission. We need to know, for each one, the updates you can provide on matter progress. This could be that the matter has reached a significant milestone (has closed / transaction has completed) for example.</b></i> <br><br>Take notes on what needs to be removed or added in term of new sources, you will have the transcript as backup for reference later."
+    },
+    s16: {
+        q: "D. Publishable information & E. Confidential Information - <br>New Matters (4/5)",
+        n: answer => answer ? 's17' : 's16',
+        l: 16,
+        m: "<i><b>For new matters we are including this year we need to run through the requirements that need to be flagged as part of the Chambers submission. This will ensure that the researcher has all of the relevant information required to decide on your ranking.  <br> -Who was the client? <br> - is this deal publishable or confidential? <br>To clarify, publishable means that Chambers can use the client’s name in their rankings commentary and associate the client/matter with you. <br><br>Tell me, in your own words,<br> - what was the matter and what we did for them. <br><br>If useful, think about answering the question in three parts: <br> 1. Why did the client come to you? What problem were they trying to solve? Why was the engagement of you (external counsel) important to them? <br> 2. What did you do to help the client solve their problem? What steps did you take?  <br> 3. What was the outcome of the matter? What value did the client gain from engaging you / your firm? Was the value reputational / monetary / risk avoidance / growth?</b></i>"
+    },
+    s17: {
+        q: "D. Publishable information & E. Confidential Information - <br>Completeness Check (5/5)",
+        n: answer => answer ? 's18' : 's17',
+        l: 17,
+        m: "<i><b>Thanks for that description. A few follow up questions if I may to ensure we have a complete dataset when it comes to drafting: <br> 1. Is there a value we can place on the matter? This can be the transactional value of the deal or size of claim. <br> 2. Is the matter cross border? If so, can you list the jurisdictions you acted in and the lawyers in those jurisdictions? <br> 3. Who led the matter on your side? Are there other team members we should mention in addition to those you’ve listed from other jurisdictions above? <br> 4. Has the matter completed? If so, when did it finish? If not, we’ll list as “ongoing”. OK? <br> 5. Is there anything else you think would be useful to add about the matter? Was there any press coverage? Did we win any awards? </b></i>"
+    },
+    s18: {
+        q: "Redy to run the transcript checker?",
+        n: answer => answer ? 's19' : 's18',
+        l: 18,
+        m: "If yes, please say:<br><i><b>Thank you very much for your answers. <br>We are now going to run an AI validation on the topics we have discussed to check if we have missed anything that we should be discussing on this call. <br>Please stay on hold for a couple of minutes while we run analyse the transcript.</b></i>"
+    },
+    s19: {
+        q: "Transcript output review",
+        n: answer => answer ? 's20' : 's19',
+        l: 19,
+        m: "Transcript checker output:<br><i<b> - Matter number 3 is missing a deal value<br> - Matter number 5 is missing a lead partner<br> - Matter number 7 is marked as complete but the completion date is missing.</b></i><br><br>Please discuss the above."
+    },
+    s20: {
+        q: "Transcrip action item generator",
+        n: answer => answer ? 's21' : 's20',
+        l: 20,
+        m: "Go over the AI generated action items:<br><i><b>Thank you very much for that. <br>Before we end this call I would like to go over the action items that remain outstanding:<br> - Follow up with Jim to get the deal value for matter 3,<br> - Speak with Linda to find out who was the lead partner in matter 5<br> - No action required for matter 7 as this has been resolved on the call.</b></i>"
+    },
+    s21: {
+        q: "Ready to finish the call?",
+        n: () => 'x',
+        l: 21,
+        m: "Please thank the partner and send the follow email with a copy of the action items outstanding. Bellow is a draft for you:<br><br><i><b>Dear ____,<br>Thank you very much for your time today.<br>As discussed, please find bellow the outstanding action items that I will take care of to finalise your submission:<br> - Follow up with Jim to get the deal value for matter 3,<br> - Speak with Linda to find out who was the lead partner in matter 5<br> - No action required for matter 7.<br>I will let you know as soon as these are completed.<br>Many thanks again,<br>_____</b></i>"
+    }
+};
+
+class DirectorySubmission {
+    constructor() {
+        // Initialize state
+        this.currentState = 's01';
+        this.currentLevel = 0;
+        this.levelMap = {};
+        this.history = [];
+        this.progressHistory = [];
+        this.workflow = WORKFLOW_STEPS;
+
+        // Build level map
+        Object.keys(this.workflow).forEach(key => {
+            this.levelMap[key] = this.workflow[key].l;
+        });
+
+        this.init();
+    }
+
+    init() {
+        // Initialize DOM elements
+        this.questionContainer = document.getElementById('q');
+        this.progressBar = document.querySelector('.progress-bar');
+        document.getElementById('t').textContent = Math.max(...Object.values(this.levelMap));
+    }
+
+    nextQuestion() {
+        const currentStep = this.workflow[this.currentState];
+        
+        if (!currentStep) {
+            this.complete();
+            return;
+        }
+
+        // Create question element
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question active';
+
+        // Add help text if available
+        let helpText = '';
+        if (currentStep.m) {
+            helpText = `<div class="help">${currentStep.m}</div>`;
+        }
+
+        // Add back button if history exists
+        const backButton = this.history.length ? 
+            '<button onclick="d.goBack()" class="back-btn secondary">← Back</button>' : '';
+
+        // Construct question HTML
+        questionDiv.innerHTML = `
+            ${backButton}
+            <h2>${currentStep.q}</h2>
+            ${helpText}
+            <div class="buttons">
+                <button onclick="d.handleAnswer(1)" class="primary">Next</button>
+            </div>
+        `;
+        //<button onclick="d.handleAnswer(0)">Repeat</button>
+    
+        // Clear all previous questions
+        const allQuestions = document.querySelectorAll('.question');
+        allQuestions.forEach(q => q.classList.remove('active'));
+        this.questionContainer.innerHTML = '';
+        this.questionContainer.appendChild(questionDiv);
+        
+        // Update progress
+        this.currentLevel = this.levelMap[this.currentState];
+        document.getElementById('c').textContent = this.currentLevel;
+        this.updateProgress();
+    }
+
+    goBack() {
+        if (this.history.length) {
+            this.currentState = this.history.pop();
+            this.currentLevel = this.progressHistory.pop();
+            this.nextQuestion();
+        }
+    }
+
+    handleAnswer(answer) {
+        // Store current state in history
+        this.history.push(this.currentState);
+        this.progressHistory.push(this.currentLevel);
+
+        const nextState = this.workflow[this.currentState].n(answer);
+        this.currentState = nextState;
+
+        // Get next state
+        // this.currentState = this.workflow[this.currentState].n(answer);
+
+        // Handle completion or continue
+        //this.currentState === 'x' ? this.complete() : this.nextQuestion();
+        if (nextState === 'x') {
+            this.complete();
+            return;
+        }
+        this.nextQuestion();
+    }
+
+    updateProgress() {
+        const maxLevel = Math.max(...Object.values(this.levelMap));
+        this.progressBar.style.width = `${(this.currentLevel / maxLevel) * 100}%`;
+    }
+
+    complete() {
+        // Hide start screen and question container
+        document.getElementById('start').classList.remove('active');
+        document.getElementById('q').innerHTML = '';
+        document.getElementById('q').style.display = 'none';
+        this.questionContainer.style.display = 'none';
+        document.querySelector('.done').classList.add('active');
+        this.progressBar.style.width = '100%';
+    }
+
+    reset() {
+        this.currentState = 's01';
+        this.currentLevel = 0;
+        this.history = [];
+        this.progressHistory = [];
+        this.questionContainer.style.display = 'block';
+        document.querySelector('.done').classList.remove('active');
+        document.getElementById('start').classList.add('active');
+        this.progressBar.style.width = '0%';
+    }
+}
+
+// Initialize app
+let d;
+const r = () => d.reset();
+const startProcess = () => {
+    document.getElementById('start').classList.remove('active');
+    d.nextQuestion();
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    d = new DirectorySubmission();
+    document.querySelector('.progress-bar').style.width = '0%';
+});
+</script>
+</body>
+</html>
